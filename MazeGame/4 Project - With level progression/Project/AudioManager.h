@@ -70,6 +70,14 @@ public:
 		Beep(1568, 50);
 	}
 
+	void PlayLifeUpPickupSound()
+	{
+		if (!m_SoundOn)
+			return;
+		Beep(1568, 50);
+		Beep(1568, 150);
+	}
+
 	void PlayMoneySound()
 	{
 		if (!m_SoundOn)

@@ -1,9 +1,9 @@
 #pragma once
-#include "PlacableActor.h"
+#include "PlaceableActor.h"
 
 class Key;
 
-class Player : public PlacableActor
+class Player : public PlaceableActor
 {
 public:
 	Player();
@@ -20,6 +20,7 @@ public:
 
 	int GetLives() { return m_lives; }
 	void DecrementLives() { m_lives--; }
+	void AddLives(int lives) { m_lives += lives; }
 
 	virtual ActorType GetType() override { return ActorType::Player; }
 	virtual void Draw() override;

@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -163,7 +163,8 @@
     <ClCompile Include="LoseState.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Money.cpp" />
-    <ClCompile Include="PlacableActor.cpp" />
+    <ClCompile Include="PlaceableActor.cpp" />
+	<ClCompile Include="LifeUp.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="SettingsState.cpp" />
@@ -185,7 +186,8 @@
     <ClInclude Include="LoseState.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Money.h" />
-    <ClInclude Include="PlacableActor.h" />
+    <ClInclude Include="PlaceableActor.h" />
+	<ClInclude Include="LifeUp.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="SettingsState.h" />

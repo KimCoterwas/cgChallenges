@@ -146,6 +146,7 @@ void DisplayLegend()
 	cout << "r g b for key" << endl;
 	cout << "R G B for door" << endl;
 	cout << "$ for money" << endl;
+	cout << "* for life up" << endl;
 	cout << "v for vertical moving enemy" << endl;
 	cout << "h for horizontal moving enemy" << endl;
 	cout << "e for non-moving enemy" << endl;

@@ -9,6 +9,7 @@
 #include "Door.h"
 #include "Goal.h"
 #include "Money.h"
+#include "LifeUp.h"
 
 using namespace std;
 
@@ -159,6 +160,10 @@ bool Level::ConvertLevel(int* playerX, int* playerY)
 				m_pLevelData[index] = ' ';
 				m_pActors.push_back(new Money(x, y, 1 + rand() % 5));
 				break;
+			case '*':
+				m_pLevelData[index] = ' ';
+				m_pActors.push_back(new LifeUp(x, y, 1));
+				break;
 			case '@':
 				m_pLevelData[index] = ' ';
 				if (playerX != nullptr && playerY != nullptr)
@@ -200,9 +205,9 @@ int Level::GetIndexFromCoordinates(int x, int y)
 }
 
 // Updates all actors and returns a colliding actor if there is one
-PlacableActor* Level::UpdateActors(int x, int y)
+PlaceableActor* Level::UpdateActors(int x, int y)
 {
-	PlacableActor* collidedActor = nullptr;
+	PlaceableActor* collidedActor = nullptr;
 
 	for (auto actor = m_pActors.begin(); actor != m_pActors.end(); ++actor)
 	{

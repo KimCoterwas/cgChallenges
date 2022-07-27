@@ -9,6 +9,7 @@
 #include "Key.h"
 #include "Door.h"
 #include "Money.h"
+#include "LifeUp.h"
 #include "Goal.h"
 #include "AudioManager.h"
 #include "Utility.h"
@@ -144,7 +145,7 @@ bool GameplayState::Update(bool processInput)
 
 void GameplayState::HandleCollision(int newPlayerX, int newPlayerY)
 {
-	PlacableActor* collidedActor = m_pLevel->UpdateActors(newPlayerX, newPlayerY);
+	PlaceableActor* collidedActor = m_pLevel->UpdateActors(newPlayerX, newPlayerY);
 	if (collidedActor != nullptr && collidedActor->IsActive())
 	{
 		switch (collidedActor->GetType())
@@ -187,6 +188,16 @@ void GameplayState::HandleCollision(int newPlayerX, int newPlayerY)
 				m_player.SetPosition(newPlayerX, newPlayerY);
 				AudioManager::GetInstance()->PlayKeyPickupSound();
 			}
+			break;
+		}
+		case ActorType::LifeUp:
+		{
+			LifeUp* collidedLifeUp = dynamic_cast<LifeUp*>(collidedActor);
+			assert(collidedLifeUp);
+			AudioManager::GetInstance()->PlayLifeUpPickupSound();
+			collidedLifeUp->Remove();
+			m_player.AddLives(collidedLifeUp->GetLife());
+			m_player.SetPosition(newPlayerX, newPlayerY);
 			break;
 		}
 		case ActorType::Door:
@@ -265,11 +276,22 @@ void GameplayState::DrawHUD(const HANDLE& console)
 	cout << endl;
 
 	// Top Border
-	for (int i = 0; i < m_pLevel->GetWidth(); ++i)
+	if (m_pLevel->GetWidth() < 53)
 	{
-		cout << Level::WAL;
+		for (int i = 0; i < 53; ++i)
+		{
+			cout << Level::WAL;
+		}
+		cout << endl;
 	}
-	cout << endl;
+	else
+	{
+		for (int i = 0; i < m_pLevel->GetWidth(); ++i)
+		{
+			cout << Level::WAL;
+		}
+		cout << endl;
+	}
 
 	// Left Side border
 	cout << Level::WAL;
@@ -301,9 +323,20 @@ void GameplayState::DrawHUD(const HANDLE& console)
 	cout << endl;
 
 	// Bottom Border
-	for (int i = 0; i < m_pLevel->GetWidth(); ++i)
+	if (m_pLevel->GetWidth() < 53)
 	{
-		cout << Level::WAL;
+		for (int i = 0; i < 53; ++i)
+		{
+			cout << Level::WAL;
+		}
+		cout << endl;
 	}
-	cout << endl;
+	else
+	{
+		for (int i = 0; i < m_pLevel->GetWidth(); ++i)
+		{
+			cout << Level::WAL;
+		}
+		cout << endl;
+	}
 }
