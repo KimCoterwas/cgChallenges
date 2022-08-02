@@ -36,7 +36,7 @@ void BubbleSort(int arr[], int n)
 	{
 		for (int i = 0; i < n - pass - 1; i++)
 		{
-			if (arr[pass] > arr[i + 1])
+			if (arr[i] > arr[i + 1])
 			{
 				swap(arr[i], arr[i + 1]);
 			}
