@@ -62,7 +62,7 @@ bool Level::Load(std::string levelName, int* playerX, int* playerY)
 		// Read level
 		m_pLevelData = new char[m_width * m_height];
 		levelFile.read(m_pLevelData, (long long)m_width * (long long)m_height);
-		
+
 		// Convert level
 		bool anyWarnings = ConvertLevel(playerX, playerY);
 		if (anyWarnings)
@@ -212,6 +212,11 @@ PlaceableActor* Level::UpdateActors(int x, int y)
 	for (auto actor = m_pActors.begin(); actor != m_pActors.end(); ++actor)
 	{
 		(*actor)->Update(); // Update all actors
+
+		if (!(*actor)->IsActive())
+		{
+			continue;
+		}
 
 		if (x == (*actor)->GetXPosition() && y == (*actor)->GetYPosition())
 		{
